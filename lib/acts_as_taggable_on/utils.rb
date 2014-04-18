@@ -18,6 +18,11 @@ module ActsAsTaggableOn
       connection && connection.adapter_name == 'Mysql2'
     end
 
+    def using_oracle_enhanced?
+      #Oracle has some trouble with the "AS" keyword. See "collection.rb#tag_scope_joins"
+      connection && connection.adapter_name == 'OracleEnhanced'
+    end
+
     def using_case_insensitive_collation?
       using_mysql? && ::ActiveRecord::Base.connection.collation =~ /_ci\Z/
     end

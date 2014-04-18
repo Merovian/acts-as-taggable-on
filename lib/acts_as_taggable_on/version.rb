@@ -1,4 +1,3 @@
 module ActsAsTaggableOn
-  VERSION = '3.1.1'
+  VERSION = '3.1.1-oracle_enhanced'
 end
-

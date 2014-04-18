@@ -169,7 +169,7 @@ module ActsAsTaggableOn::Taggable
 
         tagging_scope = tagging_scope.group(group_columns).having(having)
 
-        tag_scope = tag_scope.joins("JOIN (#{safe_to_sql(tagging_scope)}) AS #{ActsAsTaggableOn::Tagging.table_name} ON #{ActsAsTaggableOn::Tagging.table_name}.tag_id = #{ActsAsTaggableOn::Tag.table_name}.id")
+        tag_scope = tag_scope.joins("JOIN (#{safe_to_sql(tagging_scope)}) #{ActsAsTaggableOn::Tag.uses_oracle_enhanced? ? '' : 'AS '}#{ActsAsTaggableOn::Tagging.table_name} ON #{ActsAsTaggableOn::Tagging.table_name}.tag_id = #{ActsAsTaggableOn::Tag.table_name}.id")
         tag_scope.extending(CalculationMethods)
       end
 

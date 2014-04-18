@@ -17,6 +17,7 @@ module ActsAsTaggableOn
 
       def using_oracle_enhanced?
         ::ActiveRecord::Base.connection && ::ActiveRecord::Base.connection.adapter_name == 'OracleEnhanced'
+      end
 
       def sha_prefix(string)
         Digest::SHA1.hexdigest("#{string}#{rand}")[0..6]
